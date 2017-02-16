@@ -16,6 +16,10 @@ var App = {
 		$(document).on("change", "#list input", function() {
 			var cardID = $(this).parents(".card").attr("data-card-id");
 			var checked = $(this).is(":checked");
+			if(checkbox)
+				$(this).parents(".card").addClass("checked");
+			else
+				$(this).parents(".card").removeClass("checked");
 			App.Firebase.ref("users/"+App.Data.uid+"/lists/"+cardID).update({
 				"checked": checked
 			}, function() {
@@ -67,7 +71,7 @@ var App = {
 				if(data.val()[i].checked)
 					done++;
 				total++;
-				$("#list").prepend('<div class="card" data-card-id="'+i+'">' +
+				$("#list").prepend('<div class="card'+((data.val()[i].checked) ? " checked" : "")+'" data-card-id="'+i+'">' +
 			'<div class="wrapper">' +
 				'<div class="table middle">' +
 					'<div class="row">' +
