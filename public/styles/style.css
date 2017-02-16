@@ -66,9 +66,11 @@ img.dp {
     font-size: 12px;
     color: #666; }
 
-#list .card a i {
-  font-size: 24px;
-  color: #005cb9; }
+#list .card {
+  position: relative; }
+  #list .card a i {
+    font-size: 24px;
+    color: #005cb9; }
 #list .row.checked .cell:last-child {
   text-decoration: line-through;
   color: #666; }

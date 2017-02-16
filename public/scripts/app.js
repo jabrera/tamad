@@ -34,13 +34,30 @@ var App = {
 		App.updateList();
 	},
 	delete: function() {
+		var delay = 0;
 		$("#list .card").each(function() {
+			var el = $(this);
 			if($(this).find("input").is(":checked")) {
 				var id = $(this).attr("data-card-id");
 				App.Firebase.ref("users/"+App.Data.uid+"/lists/"+id).remove();
+				setTimeout(function() {
+					el.animate({
+						"left": el.outerWidth()+"px",
+						"opacity": "0"
+					}, 500, function() {
+						setTimeout(function() {
+							el.css({
+								"overflow": "hidden",
+								"margin-top": "0px"
+							}).animate({
+								"max-height": "0px"
+							}, 1000);
+						}, (500*2)+delay)
+					})
+				}, delay)
+				delay += 50;
 			}
-		})
-		App.updateList();
+		});
 	},
 	updateList: function() {
 		App.Firebase.ref("users/"+App.Data.uid+"/lists").once("value", function(data) {
