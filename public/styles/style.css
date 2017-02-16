@@ -71,7 +71,7 @@ img.dp {
   #list .card a i {
     font-size: 24px;
     color: #005cb9; }
-#list .row.checked .cell:last-child {
+#list .card.checked .cell:last-child {
   text-decoration: line-through;
   color: #666; }
 #list .loading {

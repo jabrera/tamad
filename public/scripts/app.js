@@ -16,7 +16,7 @@ var App = {
 		$(document).on("change", "#list input", function() {
 			var cardID = $(this).parents(".card").attr("data-card-id");
 			var checked = $(this).is(":checked");
-			if(checkbox)
+			if(checked)
 				$(this).parents(".card").addClass("checked");
 			else
 				$(this).parents(".card").removeClass("checked");
