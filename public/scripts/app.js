@@ -55,11 +55,14 @@ var App = {
 								"margin-top": "0px"
 							}).animate({
 								"max-height": "0px"
-							}, 1000);
+							}, 1000, function() {
+								el.remove();
+								App.updateList();
+							});
 						}, (500*2)+delay)
-					})
+					});
 				}, delay)
-				delay += 50;
+				delay += 150;
 			}
 		});
 	},
